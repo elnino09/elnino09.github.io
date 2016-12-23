@@ -91,8 +91,9 @@
 <meta property="og:site_name" content="王成晓的博客">
 <meta property="og:description" content="centos6.6下rabbitmq安装指南 + demo">
 <meta property="og:image" content="http://chengxiao.wang/2016/12/24/rabbitmq笔记1/rabbitmq.gif">
+<meta property="og:image" content="http://chengxiao.wang/2016/12/24/rabbitmq笔记1/demo1.gif">
 <meta property="og:image" content="http://chengxiao.wang/2016/12/24/rabbitmq笔记1/demo2.gif">
-<meta property="og:updated_time" content="2016-12-23T16:57:07.000Z">
+<meta property="og:updated_time" content="2016-12-23T17:14:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="rabbitmq笔记1">
 <meta name="twitter:description" content="centos6.6下rabbitmq安装指南 + demo">
@@ -364,14 +365,13 @@
 <p>The package currently targets Erlang/OTP 19.0.x,19.1.x and 19.2.x. Only 64-bit packages are provided.</p>
 </blockquote>
 <p>似乎是说只支持64-bit的。</p>
-<h1 id="成功的尝试"><a href="#成功的尝试" class="headerlink" title="成功的尝试"></a>成功的尝试</h1><p>　　经历两次失败的安装，静下心来一步步来弄，先按Erlang的官方文档来装Erlang，再安装rabbitmq。</p>
-<h2 id="Erlang安装"><a href="#Erlang安装" class="headerlink" title="Erlang安装"></a>Erlang安装</h2><p>　　因为在百度出来的教程似乎都比较复杂（这也是我第一次尝试用了EPEL的方式，因为看起来简单），而Erlang的<a href="https://www.erlang-solutions.com/resources/download.html" target="_blank" rel="external">教程</a>出乎意料的简单，执行几个命令就行了：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget https://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm</div><div class="line">rpm -Uvh erlang-solutions-1.0-1.noarch.rpm</div><div class="line">yum install erlang</div></pre></td></tr></table></figure></p>
+<h1 id="成功的尝试"><a href="#成功的尝试" class="headerlink" title="成功的尝试"></a>成功的尝试</h1><h2 id="Erlang安装"><a href="#Erlang安装" class="headerlink" title="Erlang安装"></a>Erlang安装</h2><p>　　因为在百度出来的教程似乎都比较复杂（这也是我第一次尝试用了EPEL的方式，因为看起来简单），而Erlang的<a href="https://www.erlang-solutions.com/resources/download.html" target="_blank" rel="external">教程</a>出乎意料的简单，执行几个命令就行了：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget https://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm</div><div class="line">rpm -Uvh erlang-solutions-1.0-1.noarch.rpm</div><div class="line">yum install erlang</div></pre></td></tr></table></figure></p>
 <p>一切顺利。</p>
 <h2 id="RabbitMQ安装"><a href="#RabbitMQ安装" class="headerlink" title="RabbitMQ安装"></a>RabbitMQ安装</h2><p>　　这个也是几个命令的事：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rpm --import https://www.rabbitmq.com/rabbitmq-release-signing-key.asc</div><div class="line">yum install rabbitmq-server-3.6.6-1.noarch.rpm</div></pre></td></tr></table></figure>
 <p>　　用python写rabbitmq的代码要用pika这个库，继续安装pika：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">wget https://pypi.python.org/packages/ee/25/1517ce612d7<span class="built_in">cd</span>0a426ea027275ba74165bbfd86a2daf4bce4839afac3deb/pika-0.10.0.tar.gz<span class="comment">#md5=db5025bc5abfb0f78573616ee846df31</span></div><div class="line">python setup.py install</div></pre></td></tr></table></figure></p>
-<h2 id="两个demo"><a href="#两个demo" class="headerlink" title="两个demo"></a>两个demo</h2><p>　　一切准备就绪，就开始贴代码运行了，先运行一个rabbitmq官网的<a href="https://www.rabbitmq.com/tutorials/tutorial-one-python.html" target="_blank" rel="external">hello world</a> demo，代码就不贴出来了，上个效果图：<br><img src="http://chengxiao.wang/2016/12/24/rabbitmq笔记1/demo2.gif" alt="hello world" title="demo2"></p>
-<p>再来一个<em>RabbitMQ实战</em> 2.6章节的demo：<br>![hello world][demo2]</p>
+<h2 id="两个demo"><a href="#两个demo" class="headerlink" title="两个demo"></a>两个demo</h2><p>　　一切准备就绪，就开始贴代码运行了，先运行一个rabbitmq官网的<a href="https://www.rabbitmq.com/tutorials/tutorial-one-python.html" target="_blank" rel="external">hello world</a> demo，代码就不贴出来了，上个效果图：<br><img src="http://chengxiao.wang/2016/12/24/rabbitmq笔记1/demo1.gif" alt="hello world" title="demo1"></p>
+<p>再来一个<em>RabbitMQ实战</em> 2.6章节的demo：<br><img src="http://chengxiao.wang/2016/12/24/rabbitmq笔记1/demo2.gif" alt="hello world" title="demo2"></p>
 <p>　　好了，现在rabbitmq的环境搭起来了，其他的章节以后再慢慢看吧。</p>
 
       
